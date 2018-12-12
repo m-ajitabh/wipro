@@ -3,6 +3,7 @@ package com.aj.wipro.testcases;
 import org.testng.annotations.Test;
 
 import com.aj.wipro.global.AndroidBaseTest;
+import com.aj.wipro.global.CustomProperties;
 import com.aj.wipro.screens.HomePage;
 import com.aj.wipro.screens.LoginPage;
 import com.aj.wipro.screens.PayNowPage;
@@ -16,6 +17,7 @@ public class ProductPurchaseTest extends AndroidBaseTest{
 
 		test = extent.createTest("Verify the purchase of the product");
 
+		String locale = CustomProperties.getConfigProperty("locale");
 		LoginFlow loginFlow = new LoginFlow();
 		HomePage homePage = loginFlow.setLocale("Ireland"); // Select different locale as app is not working in India
 
@@ -24,8 +26,9 @@ public class ProductPurchaseTest extends AndroidBaseTest{
 		homePage = loginFlow.enterLoginDetails();
 
 		ProductSearchFlow searchFlow = new ProductSearchFlow();
+		String product = CustomProperties.getConfigProperty("product");
 
-		PayNowPage payPage = searchFlow.searchAndBuyProduct(homePage, "Headphones");
+		PayNowPage payPage = searchFlow.searchAndBuyProduct(homePage, product);
 
 	}
 

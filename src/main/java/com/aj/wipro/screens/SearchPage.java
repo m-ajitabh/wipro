@@ -2,8 +2,6 @@ package com.aj.wipro.screens;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
-
 import com.aj.wipro.global.AndroidBasePage;
 import com.aj.wipro.global.CustomWait;
 
@@ -22,6 +20,9 @@ public class SearchPage extends AndroidBasePage {
 	@AndroidFindBy(id = "com.ebay.mobile:id/search_src_text")
 	public MobileElement searchProduct;
 
+	@AndroidFindBy(xpath ="//android.widget.ListView[contains(@resource-id,'suggestionList')]/android.widget.RelativeLayout")
+	List<AndroidElement> list;
+
 
 	public void clickBackArrow() {
 
@@ -38,11 +39,10 @@ public class SearchPage extends AndroidBasePage {
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 
-		List<AndroidElement> list = driver.findElements(By.xpath("//android.widget.ListView[contains(@resource-id,'suggestionList')]/android.widget.RelativeLayout"));
 
 		CustomWait.waitForMobileElementToBeVisible(list.get(0)).click();
 

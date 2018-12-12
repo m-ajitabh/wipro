@@ -53,7 +53,6 @@ public class HomePage extends AndroidBasePage {
 
 	public LoginPage selectLogin() {
 
-		//@AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"India\")")
 		AndroidElement signInButton = driver.findElementById("com.ebay.mobile:id/button_sign_in");
 
 		CustomWait.waitForAndroidElementToBeVisible(signInButton).click();

@@ -1,4 +1,4 @@
-/*package com.aj.wipro.common;
+package com.aj.wipro.common;
 
 import java.util.Scanner;
 
@@ -8,7 +8,6 @@ import com.aj.wipro.global.AndroidBasePage;
 import com.aj.wipro.global.CustomWait;
 
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.touch.offset.PointOption;
 
 public class CommonFunctions extends AndroidBasePage {
 
@@ -22,6 +21,8 @@ public class CommonFunctions extends AndroidBasePage {
 
 		return data.trim();
 	}
+
+	/* vertical scroll */
 
 	public static void scrollToElementVertical(WebElement sourceElement, WebElement targetElement, WebElement elementToFind,
 			int scrollCount) throws Exception {
@@ -38,13 +39,13 @@ public class CommonFunctions extends AndroidBasePage {
 					break;
 				} else {
 
-					tAction.press(PointOption.point(startx + 300, starty)).waitAction().moveTo(PointOption.point(endx + 300, endy)).release()
+					tAction.press(startx + 300, starty).waitAction().moveTo(endx + 300, endy).release()
 							.perform();
 					Thread.sleep(1);
 					count++;
 				}
 			} catch (Exception e) {
-				tAction.press(PointOption.point(startx + 300, starty)).waitAction().moveTo(PointOption.point(endx + 300, endy)).release().perform();
+				tAction.press(startx + 300, starty).waitAction().moveTo(endx + 300, endy).release().perform();
 				Thread.sleep(1);
 				count++;
 
@@ -52,6 +53,9 @@ public class CommonFunctions extends AndroidBasePage {
 			}
 		}
 	}
+
+
+	/*Horizantal scroll */
 
 	public static void scrollToElementHorizontal(WebElement sourceElement,WebElement targetElement, WebElement elementToFind, String category, int scrollCount) throws Exception {
 		TouchAction tAction = new TouchAction(androidDriver);
@@ -68,7 +72,7 @@ public class CommonFunctions extends AndroidBasePage {
 					System.out.println("Element found " + elementToFind);
 					break;
 				} else {
-					tAction.press(PointOption.point(startx, y)).waitAction().moveTo(PointOption.point(endx, y)).release()
+					tAction.press(startx, y).waitAction().moveTo(endx, y).release()
 							.perform();
 
 					Thread.sleep(2000);
@@ -92,4 +96,3 @@ public class CommonFunctions extends AndroidBasePage {
 	}
 
 }
-*/

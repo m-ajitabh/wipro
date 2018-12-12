@@ -8,7 +8,6 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class SettingPage extends AndroidBasePage{
 
-	//@AndroidFindBy(xpath="//android.widget.TextView[contains(text(),'Country')]")
 	@AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"Country\")")
 	public AndroidElement countryRegion;
 
