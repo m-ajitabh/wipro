@@ -11,21 +11,22 @@ public class CustomProperties {
 	public CustomProperties() {
 	}
 
+
+
 	private static String ReadFile(String key) throws IOException {
 		Properties prop = new Properties();
 		FileInputStream fis = new FileInputStream("./TestConfiguration.properties");
-		// System.getProperty("user.dir")).getAbsolutePath()
 		prop.load(fis);
 		return prop.getProperty(key);
 
 	}
 
+	/* get the data from properties file */
 	public static String getConfigProperty(String key) {
 
 		try {
 			value = ReadFile(key);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return value;

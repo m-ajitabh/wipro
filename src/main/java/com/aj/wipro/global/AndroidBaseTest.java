@@ -17,29 +17,18 @@ import io.appium.java_client.android.AndroidDriver;
 @SuppressWarnings("rawtypes")
 public class AndroidBaseTest extends CustomReport{
 	protected static AndroidDriver androidDriver;
-	/*public static ExtentHtmlReporter htmlReporter;
-    public static ExtentReports extent;
-    public static ExtentTest test;*/
 
-	
 	public static AndroidDriver getAndroidDriver() {
 		return androidDriver;
 	}
 
-	
-	/*@BeforeTest
-    public void startReport()
-    {
-		htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") +"/test-output/MyOwnReport.html");
-        extent = new ExtentReports();
-        extent.attachReporter(htmlReporter);
-    }*/
-	
+	/* Initilization of Android Driver */
+
 	@BeforeMethod
 	public static AndroidDriver launchAndroidDriver() {
 		try {
 			androidDriver = (AndroidDriver) DesiredDriver.getDriverInstance("Android");
-			
+
 		} catch (MalformedURLException e) {
 
 			Reporter.log("Android Driver Instantiation Failed .........");
@@ -53,14 +42,10 @@ public class AndroidBaseTest extends CustomReport{
 	public void quitDriver() throws InterruptedException {
 		Thread.sleep(15000);
 		androidDriver.quit();
-		/*extent.flush();*/
+
 	}
-	
-	/*@AfterTest
-	public void quitReport() throws InterruptedException{
-		extent.flush();
-	}*/
-	
-	
+
+
+
 
 }

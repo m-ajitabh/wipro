@@ -12,6 +12,7 @@ import com.aj.wipro.screens.SearchPage;
 
 public class ProductSearchFlow extends CustomReport {
 
+
 	public PayNowPage searchAndBuyProduct(HomePage homePage,String product) throws InterruptedException {
 
 		test = extent.createTest("Verify the search of the product");

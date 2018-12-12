@@ -2,7 +2,6 @@ package com.aj.wipro.global;
 
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,11 +19,8 @@ public class CustomWait extends AndroidBasePage {
 
 	static MobileDriver mDriver = getAndroidDriver();
 
-	public static WebElement loader(){
-		WebElement element = driver.findElement(By.xpath("//android.widget.ProgressBar[@resource-id='com.pkd:id/progressBar']"));
-		return element;
-	}
 
+	/*Fluent wait with MobileElement*/
 	public static MobileElement waitForMobileElementToBeVisible(MobileElement element) {
 
 
@@ -35,6 +31,7 @@ public class CustomWait extends AndroidBasePage {
 
 	}
 
+	/*Fluent wait with AndroidElement*/
 	public static AndroidElement waitForAndroidElementToBeVisible(AndroidElement element) {
 
 		FluentWait fluentWait = new FluentWait(getAndroidDriver()).withTimeout(60, TimeUnit.SECONDS)
@@ -44,6 +41,7 @@ public class CustomWait extends AndroidBasePage {
 
 	}
 
+	/*Explicit  wait*/
 	public static AndroidElement waitForAndroidElementExplicit(AndroidElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -52,6 +50,7 @@ public class CustomWait extends AndroidBasePage {
 
 	}
 
+	/*Fluent wait for WebElement*/
 	public static WebElement waitForWebElementElementToBeVisible(WebElement element) {
 
 		FluentWait fluentWait = new FluentWait(driver).withTimeout(60, TimeUnit.SECONDS)
@@ -59,16 +58,6 @@ public class CustomWait extends AndroidBasePage {
 		fluentWait.until(ExpectedConditions.visibilityOf(element));
 		return element;
 
-	}
-
-
-
-	public static void waitForPageToLoad(){
-		try{
-			WebDriverWait wait = new WebDriverWait(driver, 20);
-			wait.until(ExpectedConditions.invisibilityOf(loader()));
-		}catch(Exception e){
-		}
 	}
 
 }

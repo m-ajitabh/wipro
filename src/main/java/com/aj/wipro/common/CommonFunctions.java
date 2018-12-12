@@ -1,7 +1,5 @@
 package com.aj.wipro.common;
 
-import java.util.Scanner;
-
 import org.openqa.selenium.WebElement;
 
 import com.aj.wipro.global.AndroidBasePage;
@@ -11,18 +9,18 @@ import io.appium.java_client.TouchAction;
 
 public class CommonFunctions extends AndroidBasePage {
 
-	// scroll methods
 
-	public static String inputData(){
 
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter correct otp: ");
-		String data = sc.next();
-
-		return data.trim();
-	}
-
-	/* vertical scroll */
+	/* vertical scroll
+	 *
+	 * sourceElement = The element whose area are tapped to scroll up or down
+	 *
+	 * targetElement = Static reference element till where the scroll happened up or down
+	 *
+	 * elementToFind = Element till the scroll happens
+	 *
+	 * scrollCount = This will stops from infinite loop
+	 * */
 
 	public static void scrollToElementVertical(WebElement sourceElement, WebElement targetElement, WebElement elementToFind,
 			int scrollCount) throws Exception {
@@ -55,7 +53,18 @@ public class CommonFunctions extends AndroidBasePage {
 	}
 
 
-	/*Horizantal scroll */
+
+
+	/* Horizontal scroll
+	 *
+	 * sourceElement = The element whose area are tapped to scroll up or down
+	 *
+	 * targetElement = Static reference element till where the scroll happened up or down
+	 *
+	 * elementToFind = Element till the scroll happens
+	 *
+	 * scrollCount = This will stops from infinite loop
+	 * */
 
 	public static void scrollToElementHorizontal(WebElement sourceElement,WebElement targetElement, WebElement elementToFind, String category, int scrollCount) throws Exception {
 		TouchAction tAction = new TouchAction(androidDriver);
