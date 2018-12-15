@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.aj.wipro.global.AndroidBasePage;
 import com.aj.wipro.global.CustomWait;
+import com.aj.wipro.global.Log;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -22,9 +23,11 @@ public class LoginPage extends AndroidBasePage {
 	public HomePage clickGoogleSigIn() {
 
 		CustomWait.waitForAndroidElementToBeVisible(googleSignIn).click();
+		Log.info("Google Sign In clicked");
 
 		CustomWait.waitForAndroidElementExplicit(acc_picker.get(1)).click();
 
+		Log.info("Select google account from list");
 		return new HomePage();
 	}
 

@@ -1,8 +1,12 @@
 package com.aj.wipro.global;
 
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.Properties;
 
+import org.apache.log4j.xml.DOMConfigurator;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -26,6 +30,7 @@ public class AndroidBaseTest extends CustomReport{
 
 	@BeforeMethod
 	public static AndroidDriver launchAndroidDriver() {
+		DOMConfigurator.configure("log4j.xml");
 		try {
 			androidDriver = (AndroidDriver) DesiredDriver.getDriverInstance("Android");
 
@@ -42,6 +47,30 @@ public class AndroidBaseTest extends CustomReport{
 	public void quitDriver() throws InterruptedException {
 		Thread.sleep(15000);
 		androidDriver.quit();
+
+	}
+
+
+	private static String value;
+
+
+	private static String ReadFile(String key) throws IOException {
+		Properties prop = new Properties();
+		FileInputStream fis = new FileInputStream("./android_elements.properties");
+		prop.load(fis);
+		return prop.getProperty(key);
+
+	}
+
+	/* get the data from properties file */
+	public String getConfigProperty(String key) {
+
+		try {
+			value = ReadFile(key);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return value;
 
 	}
 

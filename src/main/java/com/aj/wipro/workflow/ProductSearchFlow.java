@@ -1,6 +1,7 @@
 package com.aj.wipro.workflow;
 
 import com.aj.wipro.global.CustomWait;
+import com.aj.wipro.global.Log;
 import com.aj.wipro.report.CustomReport;
 import com.aj.wipro.screens.BuyItNowPage;
 import com.aj.wipro.screens.EnterQuantityPage;
@@ -15,6 +16,7 @@ public class ProductSearchFlow extends CustomReport {
 
 	public PayNowPage searchAndBuyProduct(HomePage homePage,String product) throws InterruptedException {
 
+		Log.info("----- Product Search and Purchase flow started ----");
 		test = extent.createTest("Verify the search of the product");
 		SearchPage sp = homePage.clickSearchBox();
 
@@ -34,27 +36,27 @@ public class ProductSearchFlow extends CustomReport {
 			shippingCost = pDetailPage.getShippingCost();
 		}
 
-		Thread.sleep(3000);
+		CustomWait.customImplicitWait(3);
 
 		test = extent.createTest("Verify the quantity page");
 
 		EnterQuantityPage quantityPage = pDetailPage.clickBuyProduct();
 
-		Thread.sleep(3000);
+		CustomWait.customImplicitWait(3);
 
 		test = extent.createTest("Verify the Buy a product page");
 		BuyItNowPage buyPage = quantityPage.clickReviewButton();
 
 
-		buyPage.productTotalPrice.getText().toString();
+		float staticTotalPrice = Float.parseFloat(buyPage.productTotalPrice.getText().toString());
 
-
+		Log.info("Calculate total price");
 		float additionalCharge = 0;
 		if(buyPage.additionalPrice.isDisplayed())
 			additionalCharge = buyPage.getAdditionalPrice();
 		float totalPrice = buyPage.getTotalPrice();
 
-		System.out.println(productPrice);
+		Log.info("Product Price: " + productPrice);
 		System.out.println(shippingCost);
 		System.out.println(additionalCharge);
 		System.out.println(totalPrice);

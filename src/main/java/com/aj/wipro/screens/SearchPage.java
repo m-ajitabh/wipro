@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.aj.wipro.global.AndroidBasePage;
 import com.aj.wipro.global.CustomWait;
+import com.aj.wipro.global.Log;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -27,6 +28,7 @@ public class SearchPage extends AndroidBasePage {
 	public void clickBackArrow() {
 
 		CustomWait.waitForMobileElementToBeVisible(backArrow).click();
+		Log.info("Back arrow clicked in search page");
 	}
 
 
@@ -35,18 +37,11 @@ public class SearchPage extends AndroidBasePage {
 
 		CustomWait.waitForMobileElementToBeVisible(searchProduct).clear();
 		searchProduct.sendKeys(product);
-
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-
-			e.printStackTrace();
-		}
-
+		Log.info("Search product entered");
+		CustomWait.customImplicitWait(3);
 
 		CustomWait.waitForMobileElementToBeVisible(list.get(0)).click();
-
-		System.out.println(list.size());
+		Log.info("1st product from searched list is clicked");
 		return new ProductListPage();
 
 

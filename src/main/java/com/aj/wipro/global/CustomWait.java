@@ -19,6 +19,9 @@ public class CustomWait extends AndroidBasePage {
 
 	static MobileDriver mDriver = getAndroidDriver();
 
+	public static void customImplicitWait(int time) {
+		driver.manage().timeouts().implicitlyWait(time,TimeUnit.SECONDS) ;
+	}
 
 	/*Fluent wait with MobileElement*/
 	public static MobileElement waitForMobileElementToBeVisible(MobileElement element) {

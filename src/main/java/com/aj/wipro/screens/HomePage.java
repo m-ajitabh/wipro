@@ -2,6 +2,7 @@ package com.aj.wipro.screens;
 
 import com.aj.wipro.global.AndroidBasePage;
 import com.aj.wipro.global.CustomWait;
+import com.aj.wipro.global.Log;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -31,23 +32,26 @@ public class HomePage extends AndroidBasePage {
 	public void clickHamburger() {
 
 		CustomWait.waitForMobileElementToBeVisible(hamburger).click();
+		Log.info("Hamburger Menu clicked");
 	}
 
 	public LoginPage clickSigninButton() {
 
 		CustomWait.waitForMobileElementToBeVisible(signButton).click();
+		Log.info("Sign In button clicked");
 		return new LoginPage();
 	}
 
 	public SearchPage clickSearchBox() {
 
 		CustomWait.waitForMobileElementToBeVisible(searchBox).click();
-
+		Log.info("Search box clicked");
 		return new SearchPage();
 	}
 
 	public SettingPage clickHambergerSetting() {
 		CustomWait.waitForAndroidElementToBeVisible(hambergerSetting).click();
+		Log.info("Setting in Menu clicked");
 		return new SettingPage();
 	}
 
@@ -56,6 +60,7 @@ public class HomePage extends AndroidBasePage {
 		AndroidElement signInButton = driver.findElementById("com.ebay.mobile:id/button_sign_in");
 
 		CustomWait.waitForAndroidElementToBeVisible(signInButton).click();
+		Log.info("Select Login");
 		return new LoginPage();
 	}
 

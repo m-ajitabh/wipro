@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite guice-stage="DEVELOPMENT" name="Ebay">
+	<listeners>
+		<listener class-name="com.aj.wipro.report.CustomReport" />
+	</listeners>
+	<test name="Ebay Shop">
+		<classes>
+			<class name="com.aj.wipro.testcases.ProductPurchaseTest" />
+			
+
+		</classes>
+	</test>
+</suite>
