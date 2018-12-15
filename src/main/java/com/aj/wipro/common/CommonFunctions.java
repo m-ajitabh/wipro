@@ -97,11 +97,6 @@ public class CommonFunctions extends AndroidBasePage {
 			Thread.sleep(5000);
 		}
 
-
-		String pageSource = getAndroidDriver().getPageSource();
-		System.out.println(pageSource);
-
-
 	}
 
 }
